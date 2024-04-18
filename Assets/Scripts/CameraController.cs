@@ -9,7 +9,8 @@ public class CameraController : MonoBehaviour
 
     private Rigidbody playerRB;
 
-    private float distance; // Distance between camera and player sphere
+    private float maxDistance; // Maximum distance between camera and player sphere
+    private float distance; // Distance between camera and player
     public float sensitivityX = 5f; // Mouse sensitivity for horizontal movement
     public float sensitivityY = 5f; // Mouse sensitivity for vertical movement
     public float minYAngle = -60f; // Minimum vertical angle for the camera
@@ -25,7 +26,7 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         // Get calculations from scene
-        distance = Vector3.Distance(transform.position, player.transform.position);
+        maxDistance = Vector3.Distance(transform.position, player.transform.position);
         guideOffset = guide.transform.position - player.transform.position;
 
         playerRB = player.GetComponent<Rigidbody>();
@@ -42,7 +43,15 @@ public class CameraController : MonoBehaviour
 
         // Calculate camera rotation based on mouse input
         Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
-        
+
+        // Check for clipping
+        RaycastHit hit;
+        /*if (Physics.Raycast(player.transform.position, transform.position, out hit, maxDistance))
+            distance = hit.distance;
+        else
+            distance = maxDistance;*/
+        distance = Physics.Raycast(guide.transform.position, transform.position, out hit, maxDistance, ~LayerMask.NameToLayer("UI")) ? hit.distance : maxDistance;
+
         // Set camera position relative to player sphere
         transform.position = player.transform.position - rotation * Vector3.forward * distance;
 
