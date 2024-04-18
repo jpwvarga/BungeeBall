@@ -46,10 +46,6 @@ public class CameraController : MonoBehaviour
 
         // Check for clipping
         RaycastHit hit;
-        /*if (Physics.Raycast(player.transform.position, transform.position, out hit, maxDistance))
-            distance = hit.distance;
-        else
-            distance = maxDistance;*/
         distance = Physics.Raycast(guide.transform.position, transform.position, out hit, maxDistance, ~LayerMask.NameToLayer("UI")) ? hit.distance : maxDistance;
 
         // Set camera position relative to player sphere

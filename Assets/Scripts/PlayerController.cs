@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("Basic Info")]
     private Transform mainCam;
@@ -12,18 +12,18 @@ public class BallController : MonoBehaviour
     public float speed = 0;
     private float sideness, forwardness;
     public float jumpStrength = 200;
-    private bool isGrounded;
+    private bool isGrounded = true;
+    public float groundTolerance = 0.2f;
+    private RaycastHit groundHit;
 
     [Header("Grappling")]
-    private bool isGrappling;
+    public GrapplingHook hook;
 
     
     void Start()
     {
         mainCam = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
-        isGrounded = true;
-        isGrappling = false;
     }
 
     void Update()
@@ -31,10 +31,9 @@ public class BallController : MonoBehaviour
         sideness = Input.GetAxis("Horizontal");
         forwardness = Input.GetAxis("Vertical");
 
-        isGrounded = rb.velocity.y == 0;
-
-        if(Input.GetButtonUp("Jump"))
+        if (isGrounded && Input.GetButtonUp("Jump"))
         {
+            //Debug.Log("Boing");
             Jump();
         }
     }
@@ -42,20 +41,12 @@ public class BallController : MonoBehaviour
     void FixedUpdate()
     {
         rb.AddForce((mainCam.forward * forwardness + mainCam.right * sideness) * speed);
+
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, out groundHit, transform.localScale.y / 2 + groundTolerance, ~LayerMask.NameToLayer("Ignore Raycast"));
     }
 
-    // Either Jumps or Extends/Retracts grappling hook
     private void Jump()
     {
-        if(isGrappling)
-        {
-            // Extend or Retract Grappling Hook
-        }
-        else if(isGrounded)
-        {
-            isGrounded = false;
-            rb.AddForce(force: jumpStrength * rb.mass * Vector3.up);
-            Debug.Log("Boing");
-        }
+        rb.AddForce(jumpStrength * rb.mass * Vector3.up);
     }
 }

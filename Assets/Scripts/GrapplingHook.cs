@@ -15,13 +15,14 @@ public class GrapplingHook : MonoBehaviour
     public TMP_Text txtGrappleTimer;
 
     private float maxDistance = 30f;
+    private float minDistance = 0.08f;
     private SpringJoint joint;
 
-    public float maxDist = 0.8f;
-    public float minDist = 0.25f;
     public float spring = 4.5f;
     public float damper = 7f;
     public float massScale = 4.5f;
+
+    public float retractSpeed = 0.9f;
 
     void Awake()
     {
@@ -46,6 +47,11 @@ public class GrapplingHook : MonoBehaviour
         {
             StopGrapple();
         }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            Retract();
+        }
     }
 
     //Called after Update
@@ -61,19 +67,19 @@ public class GrapplingHook : MonoBehaviour
     {
         Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0f);
         Ray ray = Camera.main.ScreenPointToRay(screenCenter);
-        RaycastHit hit;
+        RaycastHit grappleHit;
 
-        if (Physics.Raycast(ray, out hit, maxDistance, layerMaskGrapplable))
+        if (Physics.Raycast(ray, out grappleHit, maxDistance, layerMaskGrapplable))
         {
             // Create grapple rope
-            grapplePoint = hit.point;
+            grapplePoint = grappleHit.point;
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
             joint.connectedAnchor = grapplePoint;
 
             float distanceFromPoint = Vector3.Distance(player.position, grapplePoint); 
-            joint.maxDistance = distanceFromPoint * maxDist;
-            joint.minDistance = distanceFromPoint * minDist;
+            joint.maxDistance = distanceFromPoint;
+            joint.minDistance = player.localScale.x / 2 + minDistance; // Radius of the sphere + a padding
 
             joint.spring = spring;
             joint.damper = damper;
@@ -119,5 +125,11 @@ public class GrapplingHook : MonoBehaviour
     public Vector3 GetGrapplePoint()
     {
         return grapplePoint;
+    }
+
+    public void Retract()
+    {
+        float currentDistance = Vector3.Distance(currentGrapplePosition, grapplePoint);
+        joint.maxDistance = Mathf.Max(joint.minDistance, currentDistance - currentDistance * retractSpeed * Time.deltaTime);
     }
 }

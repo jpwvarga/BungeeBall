@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (hasWon && Input.GetButtonDown("Fire1")) // Might add a quirky little timer here eventually :P
+        if (hasWon && Input.GetButtonDown("Jump")) // Might add a quirky little timer here eventually :P
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); // TODO: This should go to the next level instead
         }
@@ -52,7 +52,7 @@ public class GameController : MonoBehaviour
         collectibleText.enabled = false;
         crosshair.enabled = false;
         winText.text = "CONGRATULATIONS\nScore: " + nCollectibles.ToString() + "/" + maxCollectibleNumber.ToString();
-        continueText.text = "Press [Fire1] to continue..."; // TODO: Make this show an icon of the button
+        continueText.text = "Press [Jump] to continue..."; // TODO: Make this show an icon of the button
         winText.enabled = true;
         continueText.enabled = true;
         hasWon = true;
