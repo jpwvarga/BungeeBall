@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform player; // Reference to the player sphere GameObject
-    public Transform guide; // Reference to the satellite sphere GameObject
+    public GameObject player; // Reference to the player sphere GameObject
+    public GameObject guide; // Reference to the satellite sphere GameObject
+
+    private Rigidbody playerRB;
 
     private float distance; // Distance between camera and player sphere
     public float sensitivityX = 5f; // Mouse sensitivity for horizontal movement
@@ -18,13 +20,15 @@ public class CameraController : MonoBehaviour
 
     private Vector3 guideOffset, targetGuidePosition;
 
-    public float guideLerpSpeed = 15;
+    public float smoothTime = 0.3f;
 
     private void Start()
     {
         // Get calculations from scene
-        distance = Vector3.Distance(transform.position, player.position);
-        guideOffset = guide.position - player.position;
+        distance = Vector3.Distance(transform.position, player.transform.position);
+        guideOffset = guide.transform.position - player.transform.position;
+
+        playerRB = player.GetComponent<Rigidbody>();
     }
 
     private void LateUpdate()
@@ -40,16 +44,17 @@ public class CameraController : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
         
         // Set camera position relative to player sphere
-        transform.position = player.position - rotation * Vector3.forward * distance;
+        transform.position = player.transform.position - rotation * Vector3.forward * distance;
 
         // Calculate guide position relative to player sphere
-        targetGuidePosition = player.position + rotation * guideOffset;
+        targetGuidePosition = player.transform.position + rotation * guideOffset;
 
         // Smoothly move the guide towards its target position
-        guide.position = Vector3.Lerp(guide.position, targetGuidePosition, Time.deltaTime * guideLerpSpeed);
+        Vector3 velocity = playerRB.velocity;
+        guide.transform.position = Vector3.SmoothDamp(guide.transform.position, targetGuidePosition, ref velocity, smoothTime);
 
         // Look at the guide sphere to maintain right triangle relationship
-        transform.LookAt(guide);
+        transform.LookAt(guide.transform);
     }
 
 }
