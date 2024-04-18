@@ -79,6 +79,7 @@ public class GrapplingHook : MonoBehaviour
             joint.damper = damper;
             joint.massScale = massScale;
 
+            lr.enabled = true;
             lr.positionCount = 2;
             currentGrapplePosition = grappleOrigin.position;
         }
@@ -93,6 +94,7 @@ public class GrapplingHook : MonoBehaviour
         currentGrappleTime = 0;
         txtGrappleTimer.text = "";
         lr.positionCount = 0;
+        lr.enabled = false;
         Destroy(joint);
     }
 
