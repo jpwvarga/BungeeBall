@@ -57,4 +57,9 @@ public class GameController : MonoBehaviour
         continueText.enabled = true;
         hasWon = true;
     }
+
+    public bool HasWon()
+    {
+        return hasWon;
+    }
 }

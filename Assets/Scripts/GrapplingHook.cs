@@ -48,7 +48,7 @@ public class GrapplingHook : MonoBehaviour
             StopGrapple();
         }
 
-        if (Input.GetButtonDown("Fire2"))
+        if (IsGrappling() && Input.GetButtonDown("Fire2"))
         {
             Retract();
         }

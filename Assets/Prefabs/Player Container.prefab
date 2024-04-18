@@ -147,9 +147,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5fada81a3b5b2a41934752356434dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gc: {fileID: 0}
   speed: 5
   jumpStrength: 200
   groundTolerance: 0.2
+  isBraking: 0
+  brakeAngularDrag: 5
+  brakeForce: 0.8
   hook: {fileID: 4497997127090132945}
 --- !u!1 &3385415360196074704
 GameObject:
