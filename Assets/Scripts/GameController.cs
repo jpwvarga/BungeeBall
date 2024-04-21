@@ -7,11 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public TMP_Text collectibleText;
+    [Header("Main GUI")]
     public Image crosshair;
+
+    [Header("Collectibles")]
+    public TMP_Text collectibleText;
     public string collectibleSpriteName;
     [SerializeField] private int nCollectibles = 0;
     private int maxCollectibleNumber;
+    
+    [Header("Winning")]
     public TMP_Text winText; // Text displayed on level completion
     public TMP_Text continueText; // Text displayed when asking to continue
     private bool hasWon = false;
