@@ -89,4 +89,9 @@ public class PlayerController : MonoBehaviour
         rb.angularDrag = originalAngularDrag;
         isBraking = false;
     }
+
+    public bool IsGrounded()
+    {
+        return isGrounded;
+    }
 }

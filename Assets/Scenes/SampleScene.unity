@@ -914,6 +914,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194228}
     - target: {fileID: 4497997127090132945, guid: d7e2cd0d4c55bd14184e4276e1930267, type: 3}
+      propertyPath: maxGrappleTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4497997127090132945, guid: d7e2cd0d4c55bd14184e4276e1930267, type: 3}
       propertyPath: txtGrappleTimer
       value: 
       objectReference: {fileID: 126659214}
@@ -1773,7 +1777,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'CONGRATULATIONS
+  m_text: 'LEVEL COMPLETE
 
     Score: 0/X'
   m_isRightToLeft: 0

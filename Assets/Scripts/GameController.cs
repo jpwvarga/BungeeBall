@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
     {
         collectibleText.enabled = false;
         crosshair.enabled = false;
-        winText.text = "CONGRATULATIONS\nScore: " + nCollectibles.ToString() + "/" + maxCollectibleNumber.ToString();
+        winText.text = "LEVEL COMPLETE\nScore: " + nCollectibles.ToString() + "/" + maxCollectibleNumber.ToString();
         continueText.text = "Press [Jump] to continue..."; // TODO: Make this show an icon of the button
         winText.enabled = true;
         continueText.enabled = true;
