@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     [Header("Timer")]
     public TMP_Text goalLvlTimeText;
     public TMP_Text currLvlTimeText;
+    public Sprite goalSprite;
     public Sprite timerSprite;
     public float lvlGoalTime = 15f;
     private float currLvlTime = 0f;
@@ -123,7 +124,7 @@ public class GameController : MonoBehaviour
             //winText.text = string.Format("New Highscore!\n{0:##00.00}", lvlGoalTime);
         }
 
-        goalLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1:##00}:{2:00.00}", timerSprite.name, lvlGoalTime/60f, lvlGoalTime);
+        goalLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1:##00}:{2:00.00}", goalSprite.name, lvlGoalTime/60f, lvlGoalTime);
     }
 
     void UpdateLevelTimeText()

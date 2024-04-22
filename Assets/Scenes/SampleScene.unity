@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.8980392, b: 0.7058824, a: 1}
+  m_Color: {r: 0.9150943, g: 0.7394539, b: 0.5050285, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 648911997, guid: 9d02411808482ec439c261429bed2079, type: 3}
+  m_Sprite: {fileID: -611138858, guid: 9d02411808482ec439c261429bed2079, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -746,7 +746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gc: {fileID: 828783842}
-  timeBeforeWin: 3
+  timeBeforeWin: 1.5
 --- !u!65 &432962750
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -953,7 +953,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e1e3e64dac28149d1bf7e15801897c70, type: 3}
+  m_Sprite: {fileID: -1369324654, guid: 9d02411808482ec439c261429bed2079, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1133,7 +1133,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<sprite name="ui_crosshair">: 0'
+  m_text: '<sprite name="Icon_26">: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1152,7 +1152,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: de6b92fecbd3ca34aba583da3f162a82, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 3528b11bc1e68f4438519a6fc0aa8743, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -1600,7 +1600,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e1e3e64dac28149d1bf7e15801897c70, type: 3}
+  m_Sprite: {fileID: 1399121952, guid: 9d02411808482ec439c261429bed2079, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1650,11 +1650,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshair: {fileID: 409252765}
   collectibleText: {fileID: 686975928}
-  collectibleSpriteName: {fileID: 648911997, guid: 9d02411808482ec439c261429bed2079, type: 3}
+  collectibleSpriteName: {fileID: 21300000, guid: 0ffe7ac8ec40988499e8033cfa1f1a4c, type: 3}
   nCollectibles: 0
   goalLvlTimeText: {fileID: 1158223608}
   currLvlTimeText: {fileID: 1438131601}
-  timerSprite: {fileID: -1333497505, guid: 9d02411808482ec439c261429bed2079, type: 3}
+  goalSprite: {fileID: 1399121952, guid: 9d02411808482ec439c261429bed2079, type: 3}
+  timerSprite: {fileID: 1135374758, guid: 9d02411808482ec439c261429bed2079, type: 3}
   lvlGoalTime: 15
   winText: {fileID: 1206517659}
   winScreen: {fileID: 398344502}
@@ -1912,7 +1913,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e1e3e64dac28149d1bf7e15801897c70, type: 3}
+  m_Sprite: {fileID: 1399121952, guid: 9d02411808482ec439c261429bed2079, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2414,7 +2415,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e1e3e64dac28149d1bf7e15801897c70, type: 3}
+  m_Sprite: {fileID: -1369324654, guid: 9d02411808482ec439c261429bed2079, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2489,7 +2490,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<sprite name="ui_timer">: 00:00:00.00'
+  m_text: '<sprite name="ui_fullStar">: 00:00.00'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2613,8 +2614,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278200201
-  m_fontColor: {r: 0.5377358, g: 0.15407635, b: 0, a: 1}
+    rgba: 4278206056
+  m_fontColor: {r: 0.40784317, g: 0.24313727, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2757,7 +2758,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e1e3e64dac28149d1bf7e15801897c70, type: 3}
+  m_Sprite: {fileID: 1399121952, guid: 9d02411808482ec439c261429bed2079, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2832,7 +2833,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<sprite name="ui_timer">: 00:00:00.00'
+  m_text: '<sprite name="ui_timer">: 00:00.00'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2966,7 +2967,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e1e3e64dac28149d1bf7e15801897c70, type: 3}
+  m_Sprite: {fileID: -1369324654, guid: 9d02411808482ec439c261429bed2079, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
