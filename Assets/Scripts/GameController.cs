@@ -28,6 +28,10 @@ public class GameController : MonoBehaviour
     public TMP_Text continueText; // Text displayed when asking to continue
     private bool hasWon = false;
 
+    [Header("Win Saves")]
+    private WinSave currentSave;
+    private int currentLevel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +46,9 @@ public class GameController : MonoBehaviour
         currLvlTimeText.enabled = true;
         UpdateGoalTimeText();
         UpdateLevelTimeText();
+
+        currentLevel = SceneManager.GetActiveScene().buildIndex;
+        currentSave = WinSave.ReadFromFile(currentLevel);
     }
 
     void Update()
@@ -80,6 +87,14 @@ public class GameController : MonoBehaviour
         winText.enabled = true;
         continueText.enabled = true;
         hasWon = true;
+
+        WinSave thisW = new WinSave();
+        thisW.level = currentLevel;
+        thisW.hasCompleted = true;
+        thisW.hasAllCollectibles = currentSave.hasAllCollectibles || nCollectibles == maxCollectibleNumber;
+        thisW.hasBeatTime = currentSave.hasBeatTime || currLvlTime <= lvlGoalTime;
+        thisW.highscoreTime = currentSave.highscoreTime < 0 || currLvlTime < currentSave.highscoreTime ? currLvlTime : currentSave.highscoreTime;
+        WinSave.WriteToFile(thisW);
     }
 
     public bool HasWon()

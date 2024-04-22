@@ -44,7 +44,7 @@ public class WinZone : MonoBehaviour
     // Does a dramatic countdown to the grand finale of the level
     void DoCountdown(float timeRemaining)
     {
-        if (timeRemaining < 0f)
+        if (timeRemaining < 0f && !gc.HasWon())
         {
             gc.Win();
         }
