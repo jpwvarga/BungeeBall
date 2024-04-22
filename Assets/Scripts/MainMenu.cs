@@ -29,6 +29,11 @@ public class MainMenu : MonoBehaviour
         levelSelect.SetActive(true);
     }
 
+    public void LSelectPlay(int level)
+    {
+        SceneManager.LoadSceneAsync(level);
+    }
+
     public void ExitLevelSelect()
     {
         levelSelect.SetActive(false);
