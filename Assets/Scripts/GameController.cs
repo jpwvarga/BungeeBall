@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
     public TMP_Text winText; // Text displayed on level completion
     public TMP_Text continueText; // Text displayed when asking to continue
     private bool hasWon = false;
+    [SerializeField] GameObject winScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +74,9 @@ public class GameController : MonoBehaviour
 
     public void Win()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        winScreen.SetActive(true);
         collectibleText.enabled = false;
         crosshair.enabled = false;
         winText.text = "LEVEL COMPLETE\nScore: " + nCollectibles.ToString() + "/" + maxCollectibleNumber.ToString();
