@@ -17,4 +17,9 @@ public class WinScreen : MonoBehaviour
         //you can put the stuff in here for saving the stars
         SceneManager.LoadSceneAsync(0);
     }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }    
 }

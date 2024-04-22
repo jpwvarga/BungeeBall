@@ -1,7 +1,7 @@
 {
-    "level": 1,
+    "level": 3,
     "hasCompleted": false,
     "hasBeatTime": false,
     "hasAllCollectibles": false,
-    "highscoreTime": -1.0
+    "highscoreTime": -1
 }

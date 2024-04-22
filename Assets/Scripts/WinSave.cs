@@ -26,9 +26,7 @@ public class WinSave
         string json = JsonUtility.ToJson(save, true);
         writer.WriteLine(json);
         writer.Close();
-
-        Debug.Log(json);
-
+        //Debug.Log(json);
     }
 
     public static WinSave ReadFromFile(int lvl) 
@@ -48,5 +46,22 @@ public class WinSave
             Debug.LogWarning(err);
             return null;
         }   
+    }
+
+    public static void ClearSave(int lvl)
+    {
+        string path = string.Format("{0}/save_lvl{1}_new.json", folderPath, lvl);
+
+        try
+        {
+            StreamReader reader = new StreamReader(path);
+            string json = reader.ReadToEnd();
+            reader.Close();
+            WriteToFile(JsonUtility.FromJson<WinSave>(json));
+        }
+        catch (Exception err)
+        {
+            Debug.LogWarning(err);
+        }
     }
 }

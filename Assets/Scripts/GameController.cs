@@ -25,7 +25,6 @@ public class GameController : MonoBehaviour
 
     [Header("Winning")]
     public TMP_Text winText; // Text displayed on level completion
-    public TMP_Text continueText; // Text displayed when asking to continue
     private bool hasWon = false;
     [SerializeField] GameObject winScreen;
 
@@ -38,18 +37,18 @@ public class GameController : MonoBehaviour
     {
         hasWon = false;
         winText.enabled = false;
-        continueText.enabled = false;
         crosshair.enabled = true;
         collectibleText.enabled = true;
         UpdateCollectibleText();
         maxCollectibleNumber = FindObjectsByType<Collectible>(0).Length;
+        
+        currentLevel = SceneManager.GetActiveScene().buildIndex;
+        currentSave = WinSave.ReadFromFile(currentLevel);
+
         goalLvlTimeText.enabled = true;
         currLvlTimeText.enabled = true;
         UpdateGoalTimeText();
         UpdateLevelTimeText();
-
-        currentLevel = SceneManager.GetActiveScene().buildIndex;
-        currentSave = WinSave.ReadFromFile(currentLevel);
     }
 
     void Update()
@@ -84,12 +83,9 @@ public class GameController : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         winScreen.SetActive(true);
-        collectibleText.enabled = false;
         crosshair.enabled = false;
-        winText.text = "LEVEL COMPLETE\nScore: " + nCollectibles.ToString() + "/" + maxCollectibleNumber.ToString();
-        continueText.text = "Press [Jump] to continue..."; // TODO: Make this show an icon of the button
+        winText.text = "LEVEL COMPLETE";
         winText.enabled = true;
-        continueText.enabled = true;
         hasWon = true;
 
         WinSave thisW = new WinSave();
@@ -97,6 +93,18 @@ public class GameController : MonoBehaviour
         thisW.hasCompleted = true;
         thisW.hasAllCollectibles = currentSave.hasAllCollectibles || nCollectibles == maxCollectibleNumber;
         thisW.hasBeatTime = currentSave.hasBeatTime || currLvlTime <= lvlGoalTime;
+
+        if (currentSave.highscoreTime < 0 || currLvlTime < currentSave.highscoreTime)
+        {
+            thisW.highscoreTime = lvlGoalTime = currLvlTime;
+            winText.text = string.Format("New Best Time: {0:###0.00}s!", thisW.highscoreTime);
+            lvlGoalTime = currentSave.highscoreTime;
+        }
+        else
+        {
+            thisW.highscoreTime = currentSave.highscoreTime;
+            winText.text = "LEVEL COMPLETE";
+        }
         thisW.highscoreTime = currentSave.highscoreTime < 0 || currLvlTime < currentSave.highscoreTime ? currLvlTime : currentSave.highscoreTime;
         WinSave.WriteToFile(thisW);
     }
@@ -108,11 +116,18 @@ public class GameController : MonoBehaviour
 
     void UpdateGoalTimeText()
     {
-        goalLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1:00}:{2:00.00}", timerSprite.name, lvlGoalTime/60f, lvlGoalTime, lvlGoalTime*100f%100f);
+        if (currentSave.highscoreTime > 0 && currentSave.highscoreTime < lvlGoalTime)
+        {
+            lvlGoalTime = currentSave.highscoreTime;
+            //goalLvlTimeText.color = Color.yellow;
+            //winText.text = string.Format("New Highscore!\n{0:##00.00}", lvlGoalTime);
+        }
+
+        goalLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1:##00}:{2:00.00}", timerSprite.name, lvlGoalTime/60f, lvlGoalTime);
     }
 
     void UpdateLevelTimeText()
     {
-        currLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1:00}:{2:00.00}", timerSprite.name, currLvlTime/60f, currLvlTime, currLvlTime * 100f % 100f);
+        currLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1:##00}:{2:00.00}", timerSprite.name, currLvlTime/60f, currLvlTime);
     }
 }
