@@ -7,7 +7,7 @@ public class WinZone : MonoBehaviour
 {
     public GameController gc;
 
-    public const float TIME_BEFORE_WIN = 3f; // Time in seconds the player must be in the zone to win
+    public float timeBeforeWin = 3f; // Time in seconds the player must be in the zone to win
     private float countdownToWin = 0f; // Variable used to track time in the WinZone
     private bool inZone = false;
     
@@ -29,7 +29,7 @@ public class WinZone : MonoBehaviour
         if (other.tag == "Player")
         {
             inZone = true;
-            countdownToWin = TIME_BEFORE_WIN; // Resets countdown timer
+            countdownToWin = timeBeforeWin; // Resets countdown timer
         }
     }
 

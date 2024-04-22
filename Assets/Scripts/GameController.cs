@@ -12,10 +12,17 @@ public class GameController : MonoBehaviour
 
     [Header("Collectibles")]
     public TMP_Text collectibleText;
-    public string collectibleSpriteName;
+    public Sprite collectibleSpriteName;
     [SerializeField] private int nCollectibles = 0;
     private int maxCollectibleNumber;
-    
+
+    [Header("Timer")]
+    public TMP_Text goalLvlTimeText;
+    public TMP_Text currLvlTimeText;
+    public Sprite timerSprite;
+    public float lvlGoalTime = 15f;
+    private float currLvlTime = 0f;
+
     [Header("Winning")]
     public TMP_Text winText; // Text displayed on level completion
     public TMP_Text continueText; // Text displayed when asking to continue
@@ -31,13 +38,25 @@ public class GameController : MonoBehaviour
         collectibleText.enabled = true;
         UpdateCollectibleText();
         maxCollectibleNumber = FindObjectsByType<Collectible>(0).Length;
+        goalLvlTimeText.enabled = true;
+        currLvlTimeText.enabled = true;
+        UpdateGoalTimeText();
+        UpdateLevelTimeText();
     }
 
     void Update()
     {
-        if (hasWon && Input.GetButtonDown("Jump")) // Might add a quirky little timer here eventually :P
+        if (hasWon)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // TODO: This should go to the next level instead
+            if (Input.GetButtonDown("Jump"))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name); // TODO: This should go to the next level instead
+            }
+        }
+        else
+        {
+            currLvlTime += Time.deltaTime;
+            UpdateLevelTimeText();
         }
     }
 
@@ -49,7 +68,7 @@ public class GameController : MonoBehaviour
 
     void UpdateCollectibleText()
     {
-        collectibleText.text = "<sprite name=\"" + collectibleSpriteName + "\">: " + nCollectibles.ToString();
+        collectibleText.text = "<sprite name=\"" + collectibleSpriteName.name + "\">: " + nCollectibles.ToString();
     }
 
     public void Win()
@@ -66,5 +85,15 @@ public class GameController : MonoBehaviour
     public bool HasWon()
     {
         return hasWon;
+    }
+
+    void UpdateGoalTimeText()
+    {
+        goalLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1:00}:{2:00.00}", timerSprite.name, lvlGoalTime/60f, lvlGoalTime, lvlGoalTime*100f%100f);
+    }
+
+    void UpdateLevelTimeText()
+    {
+        currLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1:00}:{2:00.00}", timerSprite.name, currLvlTime/60f, currLvlTime, currLvlTime * 100f % 100f);
     }
 }
