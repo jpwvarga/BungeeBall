@@ -9,11 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4066085815934285219}
-  - component: {fileID: 2707941661224226985}
-  - component: {fileID: 2370182285812253929}
-  - component: {fileID: 3387467321608039365}
-  - component: {fileID: 6661379808383015631}
-  - component: {fileID: 5910299806151261466}
   m_Layer: 0
   m_Name: Collectible
   m_TagString: Untagged
@@ -33,24 +28,61 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 3464838637928470164}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2707941661224226985
+--- !u!1 &8653091009824216784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3464838637928470164}
+  - component: {fileID: 7973477304936182799}
+  - component: {fileID: 969968003264254222}
+  - component: {fileID: 6027908679090296118}
+  - component: {fileID: 2217606743213207714}
+  - component: {fileID: 868143955507880577}
+  m_Layer: 0
+  m_Name: Collectible
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3464838637928470164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8653091009824216784}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 4066085815934285219}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7973477304936182799
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254890201492945478}
+  m_GameObject: {fileID: 8653091009824216784}
   m_Mesh: {fileID: 4300000, guid: 7c47c6f4be46b454e88ad08c1bbe383d, type: 2}
---- !u!23 &2370182285812253929
+--- !u!23 &969968003264254222
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254890201492945478}
+  m_GameObject: {fileID: 8653091009824216784}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,13 +118,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3387467321608039365
+--- !u!65 &6027908679090296118
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254890201492945478}
+  m_GameObject: {fileID: 8653091009824216784}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -107,13 +139,13 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.55429405, y: 1.059, z: 0.371516}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6661379808383015631
+--- !u!114 &2217606743213207714
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254890201492945478}
+  m_GameObject: {fileID: 8653091009824216784}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce996f34fb850e34b9e034b0c56362a9, type: 3}
@@ -121,14 +153,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gc: {fileID: 0}
   value: 1
---- !u!95 &5910299806151261466
+--- !u!95 &868143955507880577
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254890201492945478}
+  m_GameObject: {fileID: 8653091009824216784}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: cd9e2e6e76a6b834d917046e4ac45bb3, type: 2}
