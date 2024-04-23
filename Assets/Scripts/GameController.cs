@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     public TMP_Text goalLvlTimeText;
     public TMP_Text currLvlTimeText;
     public Sprite goalSprite;
+    public Sprite bestTimeSprite;
     public Sprite timerSprite;
     public float lvlGoalTime = 15f;
     private float currLvlTime = 0f;
@@ -85,7 +86,7 @@ public class GameController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         winScreen.SetActive(true);
         crosshair.enabled = false;
-        winText.text = "LEVEL COMPLETE";
+        //winText.text = "LEVEL COMPLETE";
         winText.enabled = true;
         hasWon = true;
 
@@ -97,9 +98,9 @@ public class GameController : MonoBehaviour
 
         if (currentSave.highscoreTime < 0 || currLvlTime < currentSave.highscoreTime)
         {
-            thisW.highscoreTime = lvlGoalTime = currLvlTime;
+            thisW.highscoreTime = currLvlTime;
             winText.text = string.Format("New Best Time: {0:###0.00}s!", thisW.highscoreTime);
-            lvlGoalTime = currentSave.highscoreTime;
+            //lvlGoalTime = currentSave.highscoreTime;
         }
         else
         {
@@ -119,12 +120,14 @@ public class GameController : MonoBehaviour
     {
         if (currentSave.highscoreTime > 0 && currentSave.highscoreTime < lvlGoalTime)
         {
-            lvlGoalTime = currentSave.highscoreTime;
-            //goalLvlTimeText.color = Color.yellow;
-            //winText.text = string.Format("New Highscore!\n{0:##00.00}", lvlGoalTime);
+            goalLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1:##00}:{2:00}.{3:00}", bestTimeSprite.name, currentSave.highscoreTime / 60f, currentSave.highscoreTime % 60f, (currentSave.highscoreTime * 100f % 100f)/100f);
+        }
+        else
+        {
+            goalLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1:##00}:{2:00}.{3:00}", goalSprite.name, lvlGoalTime / 60f, lvlGoalTime % 60f, (lvlGoalTime * 100f % 100f) / 100f);
         }
 
-        goalLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1:##00}:{2:00.00}", goalSprite.name, lvlGoalTime/60f, lvlGoalTime);
+        
     }
 
     void UpdateLevelTimeText()

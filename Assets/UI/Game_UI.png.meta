@@ -176,10 +176,10 @@ TextureImporter:
       name: ui_blankStar
       rect:
         serializedVersion: 2
-        x: 6249
-        y: 8333.6
-        width: 2083.4
-        height: 2083.4
+        x: 2085
+        y: 2
+        width: 2083
+        height: 2083
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +197,10 @@ TextureImporter:
       name: ui_fullStar
       rect:
         serializedVersion: 2
-        x: 8332
-        y: 8333.6
-        width: 2083.4
-        height: 2083.4
+        x: 4166
+        y: 2
+        width: 2083
+        height: 2083
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -450,9 +450,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2083
-        y: 2084.6
-        width: 2083.4
-        height: 2083.4
+        y: 2085
+        width: 2083
+        height: 2083
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -550,6 +550,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: ui_gem
+      rect:
+        serializedVersion: 2
+        x: 6249
+        y: 8333
+        width: 2083
+        height: 2083
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f983a4366f6304540a4e8b963cb47bf7
+      internalID: -1277175218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -579,6 +600,7 @@ TextureImporter:
       ui_blankStar: -1369324654
       ui_crosshair: -611138858
       ui_fullStar: 1399121952
+      ui_gem: -1277175218
       ui_resetStars: 1421807154
       ui_timer: 1135374758
       ui_trophy: -248497465
