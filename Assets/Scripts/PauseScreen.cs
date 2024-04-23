@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 public class PauseScreen : MonoBehaviour
 {
     [SerializeField] GameObject pauseScreen;
+
+    void Start()
+    {
+        pauseScreen.SetActive(false);
+    }
     public void PauseScreenRestartButton()
     {
         Time.timeScale = 1;
