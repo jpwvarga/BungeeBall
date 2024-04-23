@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BallGuide : MonoBehaviour
 {
-    public Transform player; // Reference to the player's Transform
-    public Transform cameraTransform; // Reference to the main camera's Transform
+    [SerializeField] Transform player; // Reference to the player's Transform
+    [SerializeField] Transform cameraTransform; // Reference to the main camera's Transform
     private float distanceFromSurface; // Desired distance from the sphere's surface
 
     private void Start()

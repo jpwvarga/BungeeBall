@@ -8,25 +8,25 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     [Header("Main GUI")]
-    public Image crosshair;
+    [SerializeField] Image crosshair;
 
     [Header("Collectibles")]
-    public TMP_Text collectibleText;
-    public Sprite collectibleSpriteName;
+    [SerializeField] TMP_Text collectibleText;
+    [SerializeField] Sprite collectibleSpriteName;
     private int nCollectibles = 0;
     private int maxCollectibleNumber;
 
     [Header("Timer")]
-    public TMP_Text goalLvlTimeText;
-    public TMP_Text currLvlTimeText;
-    public Sprite goalSprite;
-    public Sprite bestTimeSprite;
-    public Sprite timerSprite;
+    [SerializeField] TMP_Text goalLvlTimeText;
+    [SerializeField] TMP_Text currLvlTimeText;
+    [SerializeField] Sprite goalSprite;
+    [SerializeField] Sprite bestTimeSprite;
+    [SerializeField] Sprite timerSprite;
     public float lvlGoalTime = 15f;
     private float currLvlTime = 0f;
 
     [Header("Winning")]
-    public TMP_Text winText; // Text displayed on level completion
+    [SerializeField] TMP_Text winText; // Text displayed on level completion
     private bool hasWon = false;
     [SerializeField] GameObject winScreen;
 
@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour
     private int currentLevel;
 
     [Header("Losing")]
-    public GameObject loseScreen;
+    [SerializeField] GameObject loseScreen;
     private bool gameOver = false;
 
     // Start is called before the first frame update

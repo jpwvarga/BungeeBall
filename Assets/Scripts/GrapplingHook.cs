@@ -3,12 +3,12 @@ using TMPro;
 
 public class GrapplingHook : MonoBehaviour
 {
-    public Transform grappleOrigin, player;
+    [SerializeField] Transform grappleOrigin, player;
     private LineRenderer lr;
     private Vector3 grapplePoint;
 
     [Header("Grapple Settings")]
-    public LayerMask layerMaskGrapplable;
+    [SerializeField] LayerMask layerMaskGrapplable;
     
     public float maxGrappleTime = 5f;
     private float currentGrappleTime = 0;

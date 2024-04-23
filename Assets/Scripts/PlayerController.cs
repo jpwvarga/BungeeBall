@@ -7,17 +7,17 @@ public class PlayerController : MonoBehaviour
     [Header("Basic Info")]
     private Transform mainCam;
     private Rigidbody rb;
-    public GameController gc;
+    [SerializeField] GameController gc;
 
     [Header("Movement")]
     public float speed = 0;
     private float sideness, forwardness;
-    public float jumpStrength = 200;
+    [SerializeField] float jumpStrength = 200;
     private bool isGrounded = true;
-    public float groundTolerance = 0.2f;
+    [SerializeField] float groundTolerance = 0.2f;
     private RaycastHit groundHit;
-    public bool isBraking = false;
-    public float brakeAngularDrag = 2f;
+    private bool isBraking = false;
+    [SerializeField] float brakeAngularDrag = 2f;
     private float originalAngularDrag;
 
     [Header("Grappling")]
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded && Input.GetButtonUp("Jump"))
         {
-            //Debug.Log("Boing");
+           //Debug.Log("Boing");
             Jump();
         }
 

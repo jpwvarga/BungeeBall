@@ -7,7 +7,7 @@ public class CameraCollision : MonoBehaviour
     private float distance; // Distance between camera and player
     private Vector3 dollyDir;
     public float smoothTime = 0.5f;
-    public GameObject cameraGuide;
+    [SerializeField] GameObject cameraGuide;
 
     void Awake()
     {

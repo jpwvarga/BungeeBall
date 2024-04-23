@@ -5,9 +5,9 @@ using TMPro;
 
 public class WinZone : MonoBehaviour
 {
-    public GameController gc;
+    [SerializeField] GameController gc;
 
-    public float timeBeforeWin = 1.5f; // Time in seconds the player must be in the zone to win
+    [SerializeField] float timeBeforeWin = 1.5f; // Time in seconds the player must be in the zone to win
     private float countdownToWin = 0f; // Variable used to track time in the WinZone
     private bool inZone = false;
     
@@ -25,7 +25,7 @@ public class WinZone : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             inZone = true;
             countdownToWin = timeBeforeWin; // Resets countdown timer
@@ -34,7 +34,7 @@ public class WinZone : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player" && inZone)
+        if (other.CompareTag("Player") && inZone)
         {
             inZone = false;
         }
