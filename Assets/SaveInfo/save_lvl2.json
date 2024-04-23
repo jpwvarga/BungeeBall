@@ -1,7 +1,7 @@
 {
     "level": 2,
-    "hasCompleted": false,
+    "hasCompleted": true,
     "hasBeatTime": false,
-    "hasAllCollectibles": false,
-    "highscoreTime": -1.0
+    "hasAllCollectibles": true,
+    "highscoreTime": 107.15240478515625
 }
