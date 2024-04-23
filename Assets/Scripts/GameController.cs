@@ -61,10 +61,17 @@ public class GameController : MonoBehaviour
         if (hasWon)
         {
             if (Input.GetButtonDown("Jump"))
-            {  
-                int currentscenenumber = SceneManager.GetActiveScene().buildIndex;
-                currentscenenumber++;
-                SceneManager.LoadScene(currentscenenumber); // TODO: This should go to the next level instead   Connor - I believe I fixed this
+            {
+                if (SceneManager.sceneCountInBuildSettings < SceneManager.GetActiveScene().buildIndex)
+                {
+                    int currentscenenumber = SceneManager.GetActiveScene().buildIndex;
+                    currentscenenumber++;
+                    SceneManager.LoadScene(currentscenenumber); // TODO: This should go to the next level instead   Connor - I believe I fixed this
+                }
+                else
+                {
+                    SceneManager.LoadScene(0);
+                }
             }
         }
         else
