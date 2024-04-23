@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (gc.IsOver()) return;
+
         sideness = Input.GetAxis("Horizontal");
         forwardness = Input.GetAxis("Vertical");
 
@@ -53,9 +55,15 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (gc.IsOver())
+        {
+            Brake();
+            return;
+        }
+
         isGrounded = Physics.Raycast(transform.position, Vector3.down, out groundHit, transform.localScale.y / 2 + groundTolerance, ~LayerMask.NameToLayer("Ignore Raycast"));
 
-        if (!isBraking && !gc.HasWon())
+        if (!isBraking)
             rb.AddForce((mainCam.forward * forwardness + mainCam.right * sideness) * speed);
         else
             Brake();

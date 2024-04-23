@@ -1868,7 +1868,6 @@ MonoBehaviour:
   crosshair: {fileID: 1754435279}
   collectibleText: {fileID: 2141762790}
   collectibleSpriteName: {fileID: -1277175218, guid: 9d02411808482ec439c261429bed2079, type: 3}
-  nCollectibles: 0
   goalLvlTimeText: {fileID: 1353661321}
   currLvlTimeText: {fileID: 2051267451}
   goalSprite: {fileID: 1399121952, guid: 9d02411808482ec439c261429bed2079, type: 3}
@@ -1877,6 +1876,7 @@ MonoBehaviour:
   lvlGoalTime: 75
   winText: {fileID: 1274010366}
   winScreen: {fileID: 1243987814}
+  loseScreen: {fileID: 0}
 --- !u!4 &828783843
 Transform:
   m_ObjectHideFlags: 0
@@ -3376,6 +3376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b922bb5e0dc98e547b990659b834bc37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gc: {fileID: 0}
 --- !u!64 &1925008308
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3768,6 +3769,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 340519023953625615, guid: 469b6374756f40d4296f08c8fa746bfc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 765492804815193427, guid: 469b6374756f40d4296f08c8fa746bfc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2032954837558096774, guid: 469b6374756f40d4296f08c8fa746bfc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
