@@ -99,7 +99,7 @@ public class GameController : MonoBehaviour
         if (currentSave.highscoreTime < 0 || currLvlTime < currentSave.highscoreTime)
         {
             thisW.highscoreTime = currLvlTime;
-            winText.text = string.Format("New Best Time: {0:###0.00}s!", thisW.highscoreTime);
+            winText.text = string.Format("New Best Time: {0}!", formatForTime(thisW.highscoreTime));
             //lvlGoalTime = currentSave.highscoreTime;
         }
         else
@@ -120,11 +120,11 @@ public class GameController : MonoBehaviour
     {
         if (currentSave.highscoreTime > 0 && currentSave.highscoreTime < lvlGoalTime)
         {
-            goalLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1:##00}:{2:00}.{3:00}", bestTimeSprite.name, currentSave.highscoreTime / 60f, currentSave.highscoreTime % 60f, (currentSave.highscoreTime * 100f % 100f)/100f);
+            goalLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1}", bestTimeSprite.name, formatForTime(currentSave.highscoreTime));
         }
         else
         {
-            goalLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1:##00}:{2:00}.{3:00}", goalSprite.name, lvlGoalTime / 60f, lvlGoalTime % 60f, (lvlGoalTime * 100f % 100f) / 100f);
+            goalLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1}", goalSprite.name, formatForTime(lvlGoalTime));
         }
 
         
@@ -132,6 +132,11 @@ public class GameController : MonoBehaviour
 
     void UpdateLevelTimeText()
     {
-        currLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1:##00}:{2:00.00}", timerSprite.name, currLvlTime/60f, currLvlTime);
+        currLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1}", timerSprite.name, formatForTime(currLvlTime));
+    }
+
+    public static string formatForTime(float time_s)
+    {
+        return string.Format("{0:##00}:{1:00}.{2:00}", time_s / 60f, time_s % 60f, time_s * 100f % 100f);
     }
 }

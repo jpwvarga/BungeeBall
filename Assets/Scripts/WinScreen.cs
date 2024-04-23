@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class WinScreen : MonoBehaviour
 {
-    [SerializeField] GameObject winScreen;
     void Start()
     {
-        winScreen.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 
     public void MainMenu()
