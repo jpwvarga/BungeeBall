@@ -65,7 +65,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: SadTrombone
     clip: {fileID: 8300000, guid: d6a655d9c217df24ba4dd56d1de3341f, type: 3}
-    volume: 1
+    volume: 0.25
     isPlaying: 0
     loop: 0
     source: {fileID: 0}
