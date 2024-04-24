@@ -5,29 +5,45 @@ using UnityEngine.SceneManagement;
 
 public class PauseScreen : MonoBehaviour
 {
-    [SerializeField] GameObject pauseScreen;
-
-    void Start()
+    public void Start()
     {
-        pauseScreen.SetActive(false);
-    }
-    public void PauseScreenRestartButton()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        this.gameObject.SetActive(false);
     }
 
-    public void PauseScreenGotoMainMenuButton()
+    public void Update()
     {
-        Time.timeScale = 1;
-        SceneManager.LoadSceneAsync(0);
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Continue();
+        }
     }
 
-    public void PauseScreenContinueButton()
+    private void OnEnable()
     {
-        pauseScreen.SetActive(false);
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 0;
+        CursorController.Unlock();
+    }
+
+    private void OnDisable()
+    {
+        CursorController.Lock();
         Time.timeScale = 1;
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        OverlayScreen.Restart();
+    }
+
+    public void MainMenu()
+    {
+        Time.timeScale = 1;
+        OverlayScreen.MainMenu();
+    }
+
+    public void Continue()
+    {
+        this.gameObject.SetActive(false);
     }
 }

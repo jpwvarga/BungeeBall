@@ -29,7 +29,6 @@ public class GameController : MonoBehaviour
     public TMP_Text winText; // Text displayed on level completion
     private bool hasWon = false;
     [SerializeField] GameObject winScreen;
-    [SerializeField] GameObject pauseScreen;
 
     [Header("Win Saves")]
     private WinSave currentSave;
@@ -38,6 +37,9 @@ public class GameController : MonoBehaviour
     [Header("Losing")]
     public GameObject loseScreen;
     private bool gameOver = false;
+
+    [Header("Pausing")]
+    [SerializeField] GameObject pauseScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -66,16 +68,13 @@ public class GameController : MonoBehaviour
     {
         if (!gameOver)
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                pauseScreen.SetActive(true);
+            }
+
             currLvlTime += Time.deltaTime;
             UpdateLevelTimeText();
-        }
-
-        if ((!hasWon) && Input.GetKeyDown(KeyCode.Escape))
-        {
-            pauseScreen.SetActive(true);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0;
         }
     }
 
