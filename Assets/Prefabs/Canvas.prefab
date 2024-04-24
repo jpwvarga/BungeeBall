@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7986951658905526742}
   - component: {fileID: 3070926649314001515}
   m_Layer: 5
-  m_Name: BrightStar (2)
+  m_Name: Gem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,15 +27,15 @@ RectTransform:
   m_GameObject: {fileID: 46511196403583856}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 474277654722059448}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 311.0525, y: -71.85315}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7986951658905526742
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1399121952, guid: 9d02411808482ec439c261429bed2079, type: 3}
+  m_Sprite: {fileID: -1277175218, guid: 9d02411808482ec439c261429bed2079, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 9154399931995131122}
   - component: {fileID: 3491416760273401806}
   m_Layer: 5
-  m_Name: DimStar (1)
+  m_Name: Star1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -603,7 +603,7 @@ GameObject:
   - component: {fileID: 8657610190778378353}
   - component: {fileID: 4600777790583234482}
   m_Layer: 5
-  m_Name: DimStar
+  m_Name: Star0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1151,7 +1151,7 @@ GameObject:
   - component: {fileID: 2114880948597663805}
   - component: {fileID: 7842524304573303949}
   m_Layer: 5
-  m_Name: DimStar (2)
+  m_Name: Star2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1567,8 +1567,9 @@ GameObject:
   m_Component:
   - component: {fileID: 337705984550041071}
   - component: {fileID: 9201435701691944646}
+  - component: {fileID: 2109187733940066733}
   m_Layer: 5
-  m_Name: DimStarGrid
+  m_Name: Star Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1620,6 +1621,24 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
+--- !u!114 &2109187733940066733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4242199250966061437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed73e454bb0a5c4a875081593f7b11e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dimStar: {fileID: -1369324654, guid: 9d02411808482ec439c261429bed2079, type: 3}
+  fullStar: {fileID: 1399121952, guid: 9d02411808482ec439c261429bed2079, type: 3}
+  stars:
+  - {fileID: 4600777790583234482}
+  - {fileID: 3491416760273401806}
+  - {fileID: 7842524304573303949}
 --- !u!1 &4326685893610674620
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,7 +1783,7 @@ GameObject:
   - component: {fileID: 1717084203422808631}
   - component: {fileID: 6352871538828856634}
   m_Layer: 5
-  m_Name: BrightStar
+  m_Name: Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1779,15 +1798,15 @@ RectTransform:
   m_GameObject: {fileID: 4815360392909628669}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 474277654722059448}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 71.052505, y: -71.85315}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1717084203422808631
 CanvasRenderer:
@@ -1817,7 +1836,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1399121952, guid: 9d02411808482ec439c261429bed2079, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8fb227987c3443a428c776e6762f9d0f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2799,7 +2818,7 @@ GameObject:
   - component: {fileID: 1810599470336513653}
   - component: {fileID: 4321368864187072812}
   m_Layer: 5
-  m_Name: BrightStar (1)
+  m_Name: Time
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2814,15 +2833,15 @@ RectTransform:
   m_GameObject: {fileID: 6522142009383204415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 474277654722059448}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 191.0525, y: -71.85315}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1810599470336513653
 CanvasRenderer:
@@ -2852,7 +2871,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1399121952, guid: 9d02411808482ec439c261429bed2079, type: 3}
+  m_Sprite: {fileID: 1135374758, guid: 9d02411808482ec439c261429bed2079, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3080,12 +3099,12 @@ GameObject:
   - component: {fileID: 474277654722059448}
   - component: {fileID: 6122473921467791700}
   m_Layer: 5
-  m_Name: BrightStarGrid
+  m_Name: Star Overlays
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &474277654722059448
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3105,7 +3124,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -90}
+  m_AnchoredPosition: {x: 26.12, y: -120}
   m_SizeDelta: {x: 382.105, y: 143.7063}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6122473921467791700
