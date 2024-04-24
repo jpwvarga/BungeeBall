@@ -38,6 +38,9 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject loseScreen;
     private bool gameOver = false;
 
+    [Header("Pausing")]
+    [SerializeField] GameObject pauseScreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,14 +60,23 @@ public class GameController : MonoBehaviour
         currLvlTimeText.enabled = true;
         UpdateGoalTimeText();
         UpdateLevelTimeText();
+        pauseScreen.SetActive(false);
+        Time.timeScale = 1;
     }
 
     void Update()
     {
         if (!gameOver)
         {
-            currLvlTime += Time.deltaTime;
-            UpdateLevelTimeText();
+            if (Input.GetButtonUp("Cancel"))
+            {
+                pauseScreen.SetActive(true);
+            }
+            else
+            {
+                currLvlTime += Time.deltaTime;
+                UpdateLevelTimeText();
+            }
         }
     }
 
