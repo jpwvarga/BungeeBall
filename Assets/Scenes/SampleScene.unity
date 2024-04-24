@@ -737,6 +737,7 @@ MonoBehaviour:
   lvlGoalTime: 15
   winText: {fileID: 1134975940}
   winScreen: {fileID: 1134975939}
+  pauseScreen: {fileID: 1428936147}
   loseScreen: {fileID: 775662218}
 --- !u!4 &828783843
 Transform:
@@ -1557,9 +1558,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1755190247 stripped
+--- !u!1 &1428936147 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2911708451629021290, guid: 469b6374756f40d4296f08c8fa746bfc, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2325391743657338168, guid: 469b6374756f40d4296f08c8fa746bfc, type: 3}
   m_PrefabInstance: {fileID: 1134975938}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1803945723
