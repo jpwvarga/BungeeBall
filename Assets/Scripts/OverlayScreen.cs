@@ -20,5 +20,22 @@ public class OverlayScreen : MonoBehaviour
     public static void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }    
+    }
+
+    private void OnEnable()
+    {
+        Time.timeScale = 0;
+        CursorController.Unlock();
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
+    }
+
+    public void Continue()
+    {
+        CursorController.Lock();
+        this.gameObject.SetActive(false);
+    }
 }

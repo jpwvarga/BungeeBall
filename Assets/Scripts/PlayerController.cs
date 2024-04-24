@@ -55,11 +55,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (gc.IsOver())
-        {
-            Brake();
-            return;
-        }
+        if (gc.IsOver()) return;
 
         isGrounded = Physics.Raycast(transform.position, Vector3.down, out groundHit, transform.localScale.y / 2 + groundTolerance, ~LayerMask.NameToLayer("Ignore Raycast"));
 
