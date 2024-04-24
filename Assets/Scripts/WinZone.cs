@@ -18,12 +18,8 @@ public class WinZone : MonoBehaviour
             countdownToWin -= Time.deltaTime;
             if (countdownToWin < 0f && !gc.HasWon())
             {
-                gc.Win();
+                gc.GameOver(true);
             }
-        }
-        else if (!gc.HasWon() && gc.winText.enabled)
-        {
-            gc.winText.enabled = false;
         }
     }
 

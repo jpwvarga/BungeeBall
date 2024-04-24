@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     [Header("Collectibles")]
     public TMP_Text collectibleText;
     public Sprite collectibleSpriteName;
-    [SerializeField] private int nCollectibles = 0;
+    private int nCollectibles = 0;
     private int maxCollectibleNumber;
 
     [Header("Timer")]
@@ -35,11 +35,17 @@ public class GameController : MonoBehaviour
     private WinSave currentSave;
     private int currentLevel;
 
+    [Header("Losing")]
+    public GameObject loseScreen;
+    private bool gameOver = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameOver = false;
         hasWon = false;
-        winText.enabled = false;
+
+        //winText.enabled = false;
         crosshair.enabled = true;
         collectibleText.enabled = true;
         UpdateCollectibleText();
@@ -58,23 +64,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (hasWon)
-        {
-            if (Input.GetButtonDown("Jump"))
-            {
-                if (SceneManager.sceneCountInBuildSettings < SceneManager.GetActiveScene().buildIndex)
-                {
-                    int currentscenenumber = SceneManager.GetActiveScene().buildIndex;
-                    currentscenenumber++;
-                    SceneManager.LoadScene(currentscenenumber); // TODO: This should go to the next level instead   Connor - I believe I fixed this
-                }
-                else
-                {
-                    SceneManager.LoadScene(0);
-                }
-            }
-        }
-        else
+        if (!gameOver)
         {
             currLvlTime += Time.deltaTime;
             UpdateLevelTimeText();
@@ -89,51 +79,9 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void AddCollectible(int amount)
-    {
-        nCollectibles += amount;
-        UpdateCollectibleText();
-    }
-
     void UpdateCollectibleText()
     {
         collectibleText.text = "<sprite name=\"" + collectibleSpriteName.name + "\">: " + nCollectibles.ToString();
-    }
-
-    public void Win()
-    {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        winScreen.SetActive(true);
-        crosshair.enabled = false;
-        //winText.text = "LEVEL COMPLETE";
-        winText.enabled = true;
-        hasWon = true;
-
-        WinSave thisW = new WinSave();
-        thisW.level = currentLevel;
-        thisW.hasCompleted = true;
-        thisW.hasAllCollectibles = currentSave.hasAllCollectibles || nCollectibles == maxCollectibleNumber;
-        thisW.hasBeatTime = currentSave.hasBeatTime || currLvlTime <= lvlGoalTime;
-
-        if (currentSave.highscoreTime < 0 || currLvlTime < currentSave.highscoreTime)
-        {
-            thisW.highscoreTime = currLvlTime;
-            winText.text = string.Format("New Best Time: {0}!", formatForTime(thisW.highscoreTime));
-            //lvlGoalTime = currentSave.highscoreTime;
-        }
-        else
-        {
-            thisW.highscoreTime = currentSave.highscoreTime;
-            winText.text = "LEVEL COMPLETE";
-        }
-        thisW.highscoreTime = currentSave.highscoreTime < 0 || currLvlTime < currentSave.highscoreTime ? currLvlTime : currentSave.highscoreTime;
-        WinSave.WriteToFile(thisW);
-    }
-
-    public bool HasWon()
-    {
-        return hasWon;
     }
 
     void UpdateGoalTimeText()
@@ -146,10 +94,7 @@ public class GameController : MonoBehaviour
         {
             goalLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1}", goalSprite.name, formatForTime(lvlGoalTime));
         }
-
-        
     }
-
     void UpdateLevelTimeText()
     {
         currLvlTimeText.text = string.Format("<sprite name=\"{0}\">: {1}", timerSprite.name, formatForTime(currLvlTime));
@@ -158,5 +103,64 @@ public class GameController : MonoBehaviour
     public static string formatForTime(float time_s)
     {
         return string.Format("{0:##00}:{1:00}.{2:00}", time_s / 60f, time_s % 60f, time_s * 100f % 100f);
+    }
+
+    public void GameOver(bool isWin = false)
+    {
+        CursorController.Unlock();
+        crosshair.enabled = false;
+        //winText.text = "LEVEL COMPLETE";
+        //winText.enabled = true;
+        gameOver = true;
+        hasWon = isWin;
+
+        if (hasWon && !loseScreen.activeInHierarchy)
+        {
+            winScreen.SetActive(true);
+
+            WinSave thisW = new WinSave();
+            thisW.level = currentLevel;
+            thisW.hasCompleted = true;
+            thisW.hasAllCollectibles = currentSave.hasAllCollectibles || nCollectibles == maxCollectibleNumber;
+            thisW.hasBeatTime = currentSave.hasBeatTime || currLvlTime <= lvlGoalTime;
+
+            if (currentSave.highscoreTime < 0 || currLvlTime < currentSave.highscoreTime)
+            {
+                thisW.highscoreTime = currLvlTime;
+                winText.text = string.Format("New Best Time: {0}!", formatForTime(thisW.highscoreTime));
+                //lvlGoalTime = currentSave.highscoreTime;
+            }
+            else
+            {
+                thisW.highscoreTime = currentSave.highscoreTime;
+                winText.text = "LEVEL COMPLETE";
+            }
+            thisW.highscoreTime = currentSave.highscoreTime < 0 || currLvlTime < currentSave.highscoreTime ? currLvlTime : currentSave.highscoreTime;
+            WinSave.WriteToFile(thisW);
+        }
+        else if (!winScreen.activeInHierarchy)
+        {
+            loseScreen.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("Somehow won and lost at the same time!");
+        }
+    }
+
+    public bool HasWon()
+    {
+        return hasWon;
+    }
+
+    public bool IsOver()
+    {
+        return gameOver;
+    }
+
+    public void AddCollectible(int amount)
+    {
+        nCollectibles += amount;
+        UpdateCollectibleText();
     }
 }

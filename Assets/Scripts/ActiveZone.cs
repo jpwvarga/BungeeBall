@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ActiveZone : MonoBehaviour
 {
+    [SerializeField] GameController gc;
+
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            gc.GameOver();
         }
     }
 }
