@@ -69,3 +69,9 @@ MonoBehaviour:
     isPlaying: 0
     loop: 0
     source: {fileID: 0}
+  - name: ButtonClick
+    clip: {fileID: 8300000, guid: 921d49197f1b6294597b4c5fae3acf19, type: 3}
+    volume: 1
+    isPlaying: 0
+    loop: 0
+    source: {fileID: 0}
