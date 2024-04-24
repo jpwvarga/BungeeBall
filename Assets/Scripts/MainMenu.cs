@@ -23,9 +23,7 @@ public class MainMenu : MonoBehaviour
         levelSelect.SetActive(false);
         controlsMenu.SetActive(false);
         numLevels = SceneManager.sceneCountInBuildSettings-1;
-        Debug.Log(AssetDatabase.GetAssetPath(levelButtons[0].image.sprite));
         UpdateLevelSelect();
-        
     }
 
     public void PlayGame()
