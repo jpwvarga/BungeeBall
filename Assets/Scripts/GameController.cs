@@ -68,13 +68,15 @@ public class GameController : MonoBehaviour
     {
         if (!gameOver)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetButtonUp("Cancel"))
             {
                 pauseScreen.SetActive(true);
             }
-
-            currLvlTime += Time.deltaTime;
-            UpdateLevelTimeText();
+            else
+            {
+                currLvlTime += Time.deltaTime;
+                UpdateLevelTimeText();
+            }
         }
     }
 

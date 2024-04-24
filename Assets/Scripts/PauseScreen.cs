@@ -10,14 +10,6 @@ public class PauseScreen : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    public void Update()
-    {
-        if (Input.GetButtonDown("Cancel"))
-        {
-            Continue();
-        }
-    }
-
     private void OnEnable()
     {
         Time.timeScale = 0;
@@ -26,24 +18,24 @@ public class PauseScreen : MonoBehaviour
 
     private void OnDisable()
     {
-        CursorController.Lock();
         Time.timeScale = 1;
     }
 
     public void Restart()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         OverlayScreen.Restart();
     }
 
     public void MainMenu()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         OverlayScreen.MainMenu();
     }
 
     public void Continue()
     {
+        CursorController.Lock();
         this.gameObject.SetActive(false);
     }
 }
