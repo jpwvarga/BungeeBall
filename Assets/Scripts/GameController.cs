@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
     public TMP_Text winText; // Text displayed on level completion
     private bool hasWon = false;
     [SerializeField] GameObject winScreen;
+    [SerializeField] GameObject pauseScreen;
 
     [Header("Win Saves")]
     private WinSave currentSave;
@@ -57,6 +58,8 @@ public class GameController : MonoBehaviour
         currLvlTimeText.enabled = true;
         UpdateGoalTimeText();
         UpdateLevelTimeText();
+        pauseScreen.SetActive(false);
+        Time.timeScale = 1;
     }
 
     void Update()
@@ -65,6 +68,14 @@ public class GameController : MonoBehaviour
         {
             currLvlTime += Time.deltaTime;
             UpdateLevelTimeText();
+        }
+
+        if ((!hasWon) && Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseScreen.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
         }
     }
 
