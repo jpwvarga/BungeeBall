@@ -1,30 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject levelSelect;
     [SerializeField] GameObject controlsMenu;
+    [SerializeField] Image levelIndicator;
+    [SerializeField] Sprite[] levelIndicators;
+    [SerializeField] Button[] levelButtons;
     private int numLevels;
+    private int selectedLvl = 1;
+
+    private List<WinSave> saves;
 
     void Start()
     {
-        Cursor.visible = true;
+        CursorController.Unlock();
         levelSelect.SetActive(false);
         controlsMenu.SetActive(false);
         numLevels = SceneManager.sceneCountInBuildSettings-1;
+        Debug.Log(AssetDatabase.GetAssetPath(levelButtons[0].image.sprite));
+        UpdateLevelSelect();
+        
     }
 
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(selectedLvl);
     }
     
     public void QuitGame()
     {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+#else
         Application.Quit();
+#endif
     }
 
     public void LevelSelect()
@@ -34,7 +49,9 @@ public class MainMenu : MonoBehaviour
 
     public void LSelectPlay(int level)
     {
-        SceneManager.LoadSceneAsync(level);
+        selectedLvl = level;
+        levelIndicator.sprite = levelIndicators[level - 1];
+        ExitLevelSelect();
     }
 
     public void ExitLevelSelect()
@@ -56,6 +73,7 @@ public class MainMenu : MonoBehaviour
     {
         //resetLevels = true;
         StartCoroutine(IResetLevels());
+        UpdateLevelSelect();
     }
 
     private IEnumerator IResetLevels()
@@ -63,6 +81,25 @@ public class MainMenu : MonoBehaviour
         for (int i = 1; i <= numLevels; i++)
         {
             WinSave.ClearSave(i);
+            yield return null;
+        }
+    }
+
+    private void UpdateLevelSelect()
+    {
+        StartCoroutine(IUpdateLLvlSelect());
+    }
+
+    private IEnumerator IUpdateLLvlSelect()
+    {
+        saves = new List<WinSave>(numLevels);
+        for (int i = 1; i <= numLevels; i++)
+        {
+            // Get the save
+            saves.Insert(i-1, WinSave.ReadFromFile(i));
+
+            // Update the stars
+            levelButtons[i - 1].GetComponent<ChangeStars>().ChangeTo(saves[i-1]);
             yield return null;
         }
     }
