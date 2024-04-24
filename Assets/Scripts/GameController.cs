@@ -8,25 +8,25 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     [Header("Main GUI")]
-    public Image crosshair;
+    [SerializeField] Image crosshair;
 
     [Header("Collectibles")]
-    public TMP_Text collectibleText;
-    public Sprite collectibleSpriteName;
+    [SerializeField] TMP_Text collectibleText;
+    [SerializeField] Sprite collectibleSpriteName;
     private int nCollectibles = 0;
     private int maxCollectibleNumber;
 
     [Header("Timer")]
-    public TMP_Text goalLvlTimeText;
-    public TMP_Text currLvlTimeText;
-    public Sprite goalSprite;
-    public Sprite bestTimeSprite;
-    public Sprite timerSprite;
+    [SerializeField] TMP_Text goalLvlTimeText;
+    [SerializeField] TMP_Text currLvlTimeText;
+    [SerializeField] Sprite goalSprite;
+    [SerializeField] Sprite bestTimeSprite;
+    [SerializeField] Sprite timerSprite;
     public float lvlGoalTime = 15f;
     private float currLvlTime = 0f;
 
     [Header("Winning")]
-    public TMP_Text winText; // Text displayed on level completion
+    [SerializeField] TMP_Text winText; // Text displayed on level completion
     private bool hasWon = false;
     [SerializeField] GameObject winScreen;
 
@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour
     private int currentLevel;
 
     [Header("Losing")]
-    public GameObject loseScreen;
+    [SerializeField] GameObject loseScreen;
     private bool gameOver = false;
 
     [Header("Pausing")]
@@ -68,13 +68,15 @@ public class GameController : MonoBehaviour
     {
         if (!gameOver)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetButtonDown("Cancel"))
             {
                 pauseScreen.SetActive(true);
             }
-
-            currLvlTime += Time.deltaTime;
-            UpdateLevelTimeText();
+            else
+            {
+                currLvlTime += Time.deltaTime;
+                UpdateLevelTimeText();
+            }
         }
     }
 
@@ -127,6 +129,7 @@ public class GameController : MonoBehaviour
         if (hasWon && !loseScreen.activeInHierarchy)
         {
             winScreen.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("LevelComplete");
 
             WinSave thisW = new WinSave();
             thisW.level = currentLevel;
@@ -150,6 +153,7 @@ public class GameController : MonoBehaviour
         }
         else if (!winScreen.activeInHierarchy)
         {
+            FindObjectOfType<AudioManager>().Play("SadTrombone");
             loseScreen.SetActive(true);
         }
         else
@@ -170,6 +174,7 @@ public class GameController : MonoBehaviour
 
     public void AddCollectible(int amount)
     {
+        FindObjectOfType<AudioManager>().Play("PickupCollectable");
         nCollectibles += amount;
         UpdateCollectibleText();
     }

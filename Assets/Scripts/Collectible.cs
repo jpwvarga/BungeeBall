@@ -11,7 +11,7 @@ public class Collectible : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             gc.AddCollectible(value);
             Destroy(this.gameObject);

@@ -571,6 +571,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: play_1
+      rect:
+        serializedVersion: 2
+        x: 8334
+        y: 8334
+        width: 2083
+        height: 2083
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3b8d11acf7e5844aadc29be95f89324
+      internalID: -253906704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: play_3
+      rect:
+        serializedVersion: 2
+        x: 8334
+        y: 0
+        width: 2083
+        height: 2083
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5fe661e4c8f70349a97b88cdb025e21
+      internalID: 244065066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: play_2
+      rect:
+        serializedVersion: 2
+        x: 6249
+        y: 0
+        width: 2083
+        height: 2083
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5a441f988d36b84abe353222148b478
+      internalID: 861849481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -597,6 +660,9 @@ TextureImporter:
       lvl3_101: 895706418
       lvl3_110: 168993989
       lvl3_111: -932897672
+      play_1: -253906704
+      play_2: 861849481
+      play_3: 244065066
       ui_blankStar: -1369324654
       ui_crosshair: -611138858
       ui_fullStar: 1399121952

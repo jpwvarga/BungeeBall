@@ -7,17 +7,17 @@ public class PlayerController : MonoBehaviour
     [Header("Basic Info")]
     private Transform mainCam;
     private Rigidbody rb;
-    public GameController gc;
+    [SerializeField] GameController gc;
 
     [Header("Movement")]
     public float speed = 0;
     private float sideness, forwardness;
-    public float jumpStrength = 200;
+    [SerializeField] float jumpStrength = 200;
     private bool isGrounded = true;
-    public float groundTolerance = 0.2f;
+    [SerializeField] float groundTolerance = 0.2f;
     private RaycastHit groundHit;
-    public bool isBraking = false;
-    public float brakeAngularDrag = 2f;
+    private bool isBraking = false;
+    [SerializeField] float brakeAngularDrag = 2f;
     private float originalAngularDrag;
 
     [Header("Grappling")]
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded && Input.GetButtonUp("Jump"))
         {
-            //Debug.Log("Boing");
+           //Debug.Log("Boing");
             Jump();
         }
 
@@ -51,15 +51,29 @@ public class PlayerController : MonoBehaviour
         {
             Unbrake();
         }
+
+        // if (isGrounded)
+        // {
+        //     if (((rb.velocity.x <= -1) || (rb.velocity.x >= 1)) && ((rb.velocity.z <= -1) || (rb.velocity.z >= 1)))
+        //     {
+        //         FindObjectOfType<AudioManager>().Play("MarbleRoll");
+        //     }//x <= -1 || x >= 1
+        // }
+        // else if ((rb.velocity.x >= -1) && (rb.velocity.x <= 1) && (rb.velocity.z >= -1) && (rb.velocity.z <= 1))
+        // {
+        //     FindObjectOfType<AudioManager>().StopPlaying("MarbleRoll");
+        // }
+        // else
+        // {
+        //     FindObjectOfType<AudioManager>().StopPlaying("MarbleRoll");
+        // }
+        // Debug.Log(rb.velocity);
+        //rb.velocity
     }
 
     void FixedUpdate()
     {
-        if (gc.IsOver())
-        {
-            Brake();
-            return;
-        }
+        if (gc.IsOver()) return;
 
         isGrounded = Physics.Raycast(transform.position, Vector3.down, out groundHit, transform.localScale.y / 2 + groundTolerance, ~LayerMask.NameToLayer("Ignore Raycast"));
 

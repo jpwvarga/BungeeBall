@@ -9,7 +9,7 @@ public class ActiveZone : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             gc.GameOver();
         }
