@@ -101,7 +101,18 @@ public class GameController : MonoBehaviour
 
     public static string formatForTime(float time_s)
     {
-        return string.Format("{0:##00}:{1:00}.{2:00}", time_s / 60f, time_s % 60f, time_s * 100f % 100f);
+        int minutes = Mathf.FloorToInt(time_s / 60f);
+        int seconds = Mathf.FloorToInt(time_s % 60f);
+        int milliseconds = Mathf.FloorToInt((time_s * 100f) % 100f);
+
+        // Adjust seconds if milliseconds rounds up to 60
+        if (milliseconds >= 60)
+        {
+            seconds++;
+            milliseconds -= 60;
+        }
+
+        return string.Format("{0:##00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
     }
 
     public void GameOver(bool isWin = false)
