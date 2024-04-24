@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
     [SerializeField] TMP_Text winText; // Text displayed on level completion
     private bool hasWon = false;
     [SerializeField] GameObject winScreen;
+    [SerializeField] ChangeWinStars winStarContainer;
 
     [Header("Win Saves")]
     private WinSave currentSave;
@@ -131,11 +132,18 @@ public class GameController : MonoBehaviour
             winScreen.SetActive(true);
             FindObjectOfType<AudioManager>().Play("LevelComplete");
 
+            WinSave runSave = new WinSave();
+            runSave.level = currentLevel;
+            runSave.hasCompleted = true;
+            runSave.hasBeatTime = currLvlTime <= lvlGoalTime;
+            runSave.hasAllCollectibles = nCollectibles == maxCollectibleNumber;
+            winStarContainer.UpdateWinStars(runSave);
+
             WinSave thisW = new WinSave();
             thisW.level = currentLevel;
             thisW.hasCompleted = true;
-            thisW.hasAllCollectibles = currentSave.hasAllCollectibles || nCollectibles == maxCollectibleNumber;
-            thisW.hasBeatTime = currentSave.hasBeatTime || currLvlTime <= lvlGoalTime;
+            thisW.hasBeatTime = currentSave.hasBeatTime || runSave.hasBeatTime;
+            thisW.hasAllCollectibles = currentSave.hasAllCollectibles || runSave.hasAllCollectibles;
 
             if (currentSave.highscoreTime < 0 || currLvlTime < currentSave.highscoreTime)
             {
