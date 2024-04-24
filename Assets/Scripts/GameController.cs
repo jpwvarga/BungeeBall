@@ -109,11 +109,11 @@ public class GameController : MonoBehaviour
         int milliseconds = Mathf.FloorToInt((time_s * 100f) % 100f);
 
         // Adjust seconds if milliseconds rounds up to 60
-        if (milliseconds >= 60)
+        /*if (milliseconds >= 60)
         {
             seconds++;
             milliseconds -= 60;
-        }
+        }*/
 
         return string.Format("{0:##00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
     }

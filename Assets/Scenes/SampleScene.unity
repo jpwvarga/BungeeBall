@@ -734,7 +734,7 @@ MonoBehaviour:
   goalSprite: {fileID: 1399121952, guid: 9d02411808482ec439c261429bed2079, type: 3}
   bestTimeSprite: {fileID: -248497465, guid: 9d02411808482ec439c261429bed2079, type: 3}
   timerSprite: {fileID: 1135374758, guid: 9d02411808482ec439c261429bed2079, type: 3}
-  lvlGoalTime: 15
+  lvlGoalTime: 6.5
   winText: {fileID: 1134975940}
   winScreen: {fileID: 1134975939}
   winStarContainer: {fileID: 1791499855}
