@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
     {
         if (!gameOver)
         {
-            if (Input.GetButtonUp("Cancel"))
+            if (Input.GetButtonDown("Cancel"))
             {
                 pauseScreen.SetActive(true);
             }
@@ -118,6 +118,7 @@ public class GameController : MonoBehaviour
         if (hasWon && !loseScreen.activeInHierarchy)
         {
             winScreen.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("LevelComplete");
 
             WinSave thisW = new WinSave();
             thisW.level = currentLevel;
@@ -141,6 +142,7 @@ public class GameController : MonoBehaviour
         }
         else if (!winScreen.activeInHierarchy)
         {
+            FindObjectOfType<AudioManager>().Play("SadTrombone");
             loseScreen.SetActive(true);
         }
         else
@@ -161,6 +163,7 @@ public class GameController : MonoBehaviour
 
     public void AddCollectible(int amount)
     {
+        FindObjectOfType<AudioManager>().Play("PickupCollectable");
         nCollectibles += amount;
         UpdateCollectibleText();
     }
