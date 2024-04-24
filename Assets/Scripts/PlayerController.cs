@@ -52,23 +52,25 @@ public class PlayerController : MonoBehaviour
             Unbrake();
         }
 
-        // if (isGrounded)
-        // {
-        //     if (((rb.velocity.x <= -1) || (rb.velocity.x >= 1)) && ((rb.velocity.z <= -1) || (rb.velocity.z >= 1)))
-        //     {
-        //         FindObjectOfType<AudioManager>().Play("MarbleRoll");
-        //     }//x <= -1 || x >= 1
-        // }
-        // else if ((rb.velocity.x >= -1) && (rb.velocity.x <= 1) && (rb.velocity.z >= -1) && (rb.velocity.z <= 1))
-        // {
-        //     FindObjectOfType<AudioManager>().StopPlaying("MarbleRoll");
-        // }
-        // else
-        // {
-        //     FindObjectOfType<AudioManager>().StopPlaying("MarbleRoll");
-        // }
-        // Debug.Log(rb.velocity);
-        //rb.velocity
+        /*if (isGrounded)
+        {
+            if (rb.velocity.magnitude >= 1)
+            {
+                FindObjectOfType<AudioManager>().Play("MarbleRoll");
+            }
+            else
+            {
+                
+            }
+        }
+        else if ((rb.velocity.x >= -1) && (rb.velocity.x <= 1) && (rb.velocity.z >= -1) && (rb.velocity.z <= 1))
+        {
+            FindObjectOfType<AudioManager>().StopPlaying("MarbleRoll");
+        }
+        else
+        {
+             FindObjectOfType<AudioManager>().StopPlaying("MarbleRoll");
+        }*/
     }
 
     void FixedUpdate()

@@ -88,6 +88,9 @@ public class GrapplingHook : MonoBehaviour
             lr.enabled = true;
             lr.positionCount = 2;
             currentGrapplePosition = grappleOrigin.position;
+
+            //FindObjectOfType<AudioManager>().Play("GrappleLaunch");
+            FindObjectOfType<AudioManager>().Play("GrappleHit");
         }
     }
 
