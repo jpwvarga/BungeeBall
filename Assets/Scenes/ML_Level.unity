@@ -607,6 +607,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8436589583629648999, guid: 71ef114665116b64d90442979ffa26ad, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 828783842}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3622,6 +3626,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8436589583629648999, guid: 71ef114665116b64d90442979ffa26ad, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 828783842}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4192,6 +4200,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible
       objectReference: {fileID: 0}
+    - target: {fileID: 8436589583629648999, guid: 71ef114665116b64d90442979ffa26ad, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 828783842}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

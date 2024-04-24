@@ -44,10 +44,10 @@ GameObject:
   - component: {fileID: 7973477304936182799}
   - component: {fileID: 969968003264254222}
   - component: {fileID: 6027908679090296118}
-  - component: {fileID: 2217606743213207714}
   - component: {fileID: 868143955507880577}
+  - component: {fileID: 8436589583629648999}
   m_Layer: 0
-  m_Name: Collectible
+  m_Name: Gem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,20 +139,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.55429405, y: 1.059, z: 0.371516}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2217606743213207714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8653091009824216784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce996f34fb850e34b9e034b0c56362a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gc: {fileID: 0}
-  value: 1
 --- !u!95 &868143955507880577
 Animator:
   serializedVersion: 5
@@ -174,3 +160,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8436589583629648999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8653091009824216784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce996f34fb850e34b9e034b0c56362a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gc: {fileID: 0}
+  value: 1
