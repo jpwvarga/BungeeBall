@@ -75,3 +75,21 @@ MonoBehaviour:
     isPlaying: 0
     loop: 0
     source: {fileID: 0}
+  - name: AudienceCheer
+    clip: {fileID: 8300000, guid: e58269cacf0ace645b4167a0d96f6132, type: 3}
+    volume: 0.5
+    isPlaying: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: GrappleLaunch
+    clip: {fileID: 8300000, guid: 27da7d7b513f60c46a2dca1619b7564e, type: 3}
+    volume: 0.5
+    isPlaying: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: GrappleHit
+    clip: {fileID: 8300000, guid: 65bab9829f1446348850493f7a1eca4d, type: 3}
+    volume: 0.5
+    isPlaying: 0
+    loop: 0
+    source: {fileID: 0}
