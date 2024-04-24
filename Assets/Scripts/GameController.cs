@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
     {
         if (!gameOver)
         {
-            if (Input.GetButtonUp("Cancel"))
+            if (Input.GetButtonDown("Cancel"))
             {
                 pauseScreen.SetActive(true);
             }
